@@ -1,0 +1,179 @@
+.section {
+  min-height: 100vh;
+  padding: 120px 8vw;
+  background: #050507;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 64px;
+}
+
+/* Heading */
+.heading {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* Container */
+.container {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+}
+
+/* Card */
+.card {
+  position: relative;
+  width: 420px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+
+  /* 👇 ALWAYS IN MOTION */
+  animation: idleFloat 5s ease-in-out infinite;
+}
+
+.cardName {
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+
+  text-align: center;      /* centers text */
+  margin-inline: auto;     /* centers the block */
+}
+
+/* Small phase difference so it feels organic */
+.card:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+/* Hover expansion */
+.card:hover {
+  transform: scale(1.08);
+  z-index: 2;
+  animation-play-state: paused; /* pause motion on hover */
+}
+
+/* Entrance motion (initial load only, still fine) */
+.fromLeft {
+  animation:
+    fromLeft 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    idleFloat 5s ease-in-out infinite;
+}
+
+.fromRight {
+  animation:
+    fromRight 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    idleFloat 5s ease-in-out infinite;
+}
+
+/* Entrance keyframes */
+@keyframes fromLeft {
+  from {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fromRight {
+  from {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 🌊 Always-alive motion */
+@keyframes idleFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Image */
+.image {
+  object-fit: cover;
+  filter: contrast(1.05) brightness(0.9);
+}
+
+/* Hover overlay */
+.hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 7, 0.85);
+  backdrop-filter: blur(12px);
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .hover {
+  opacity: 1;
+}
+
+/* Floor plan image */
+.hoverImage {
+  object-fit: contain;
+  padding: 28px;
+}
+
+/* Plan label */
+.label {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 460px;
+    animation: none; /* calm on mobile */
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

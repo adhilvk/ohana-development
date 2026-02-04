@@ -15,13 +15,18 @@ export default function Navbar() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Image
-            src="/images/logoo.jpeg"
-            alt="logoo"
-            width={130}
-            height={35}
-            priority
-            className="object-contain rounded-b-2xl"
-          />
+  src="/images/logoo.jpeg"
+  alt="logoo"
+  width={130}
+  height={35}
+  priority
+  className="object-contain"
+  style={{
+    borderRadius: "18px 18px 0 0",
+    clipPath: "polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%)",
+  }}
+/>
+
         </motion.div>
 
         {/* Register button – right corner */}

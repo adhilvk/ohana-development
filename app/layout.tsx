@@ -21,6 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={playfair.variable}>
+      <head>
+        {/* Remix Icons */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+      </head>
+
       <body className="bg-black text-white antialiased">
         <ClientNavbar />
         <main>{children}</main>
