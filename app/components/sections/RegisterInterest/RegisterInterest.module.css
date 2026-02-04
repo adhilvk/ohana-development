@@ -1,0 +1,187 @@
+.section {
+  min-height: 100vh;
+  padding: 120px 8vw;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(120, 120, 255, 0.06),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(255, 255, 255, 0.04),
+      transparent 40%
+    ),
+    #050507;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== WRAPPER ===== */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* ===== SHARED GLASS STYLE ===== */
+.brandCard,
+.formCard {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== LEFT : SLIDESHOW ===== */
+.brandCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+}
+
+/* slideshow container */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ALL slides (important fixes here) */
+.slideImage {
+  position: absolute;
+  inset: 0;
+
+  object-fit: cover;
+  opacity: 0;
+
+  animation: fadeSlide 10s infinite;
+}
+
+/* logo slide */
+.logoImage {
+  object-fit: contain;
+
+  /* 🔥 make it big */
+  padding: 8px;           /* was too large before */
+  transform: scale(1.15);  /* enlarges logo correctly */
+
+  background: rgba(5, 5, 7, 0.65);
+}
+
+
+/* 🔑 CORRECT animation delays */
+.slideImage:nth-of-type(1) { animation-delay: 0s; }
+.slideImage:nth-of-type(2) { animation-delay: 4s; }
+.slideImage:nth-of-type(3) { animation-delay: 8s; }
+.slideImage:nth-of-type(4) { animation-delay: 12s; }
+.slideImage:nth-of-type(5) { animation-delay: 16s; }
+
+/* fade animation */
+@keyframes fadeSlide {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  25%  { opacity: 1; }
+  30%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ===== RIGHT : FORM CARD ===== */
+.formCard {
+  padding: 48px;
+  text-align: center;
+}
+
+/* Heading */
+.heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 12px;
+}
+
+/* Subtext */
+.subtext {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 36px;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 14px 18px;
+
+  background: rgba(5, 5, 7, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+
+  outline: none;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(5, 5, 7, 0.85);
+}
+
+/* Button */
+.button {
+  margin-top: 16px;
+  padding: 16px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .brandCard {
+    min-height: 360px;
+  }
+
+  .formCard {
+    padding: 36px 28px;
+  }
+}

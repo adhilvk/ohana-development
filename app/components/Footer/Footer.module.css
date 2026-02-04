@@ -1,0 +1,83 @@
+.footer {
+  background: #050507;
+  padding: 80px 6vw 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+
+  text-align: center;
+}
+
+/* Brand text */
+.brand {
+  font-size: 0.9rem;
+  letter-spacing: 0.35em;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Social icons */
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+.socials a {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socials a:hover {
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Careers */
+.careers {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Links */
+.links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.links a {
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.links span {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Copyright */
+.copy {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 6vw 40px;
+  }
+}
